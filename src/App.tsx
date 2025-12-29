@@ -42,7 +42,7 @@ const App: React.FC = () => {
       tag: ["React ", ".NET ", "MSSQL ", "MySQL ", "Azure Blob Storage ", "Azure Web Job ", "SignalR"]
     },
     {
-      naziv: "BUNJO d.o.o.",
+      naziv: "BUNJO d.o.o. Sarajevo",
       opis: "Zvanična mobilna aplikacija dostupna na Play Store-u (uskoro i na App Store).",
       godina: "2024. -",
       link: "https://play.google.com/store/apps/details?id=com.majalojo.bunjogrupacijapk",
