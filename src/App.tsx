@@ -183,7 +183,7 @@ const App: React.FC = () => {
                           <p className="text-secondary mb-0 small" style={{ fontSize: "12px" }}>
                             {proj.opis}
                           </p>
-                           <Badge key={index} bg="secondary" style={{ fontSize: "9px" }}>{proj.godina}</Badge>
+                           <Badge bg="secondary" style={{ fontSize: "9px" }}>{proj.godina}</Badge>
                         </div>
                         <span className="text-primary fs-4"><FaArrowCircleRight size={20}/></span>
                       </div>
