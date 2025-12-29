@@ -160,7 +160,7 @@ const App: React.FC = () => {
           <Col lg={7}>
             <Card style={darkCardStyle} className="p-4 shadow">
               <Card.Title className="fw-bold mb-4 text-primary">
-                Projekti i zaposlenje
+                Projekti
               </Card.Title>
               <div className="d-flex flex-column gap-3">
                 {projekti.map((proj, idx) => (
