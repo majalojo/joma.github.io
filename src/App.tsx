@@ -1,11 +1,23 @@
-import React from "react";
-import { Container, Row, Col, Card, Badge, ListGroup } from "react-bootstrap";
+import React, {useState} from "react";
+import {Container, Row, Col, Card, Badge, ListGroup, Image, Modal} from "react-bootstrap";
 import majalojo from "../src/assets/MajaLojo.jpg";
 import { FaReact } from "react-icons/fa";
 import { DiMsqlServer } from "react-icons/di";
 import { VscAzure } from "react-icons/vsc";
 import { SiDotnet } from "react-icons/si";
 import { FaArrowCircleRight } from "react-icons/fa";
+import { FaFigma } from "react-icons/fa";
+import { DiMysql } from "react-icons/di";
+import { DiBootstrap } from "react-icons/di";
+import { DiGithubBadge } from "react-icons/di";
+import { PiFileCSharpLight } from "react-icons/pi";
+import { SiTypescript } from "react-icons/si";
+import database from "../src/assets/databases.jpg";
+import frontend from "./assets/frontend.jpg";
+import javascript from "./assets/javascript.jpg";
+import zahvalnica from "./assets/zahvalnica.jpg";
+
+
 
 interface Projekat {
   naziv: string;
@@ -20,6 +32,12 @@ interface Skolovanje {
   fakultet: string;
   smjer: string;
   period: string;
+}
+
+interface Certifikati{
+  naziv: string;
+  godina: string;
+  slika: string;
 }
 
 const App: React.FC = () => {
@@ -50,6 +68,31 @@ const App: React.FC = () => {
     },
   ];
 
+  const certifikatiZahvalnice:Certifikati[] = [
+    {
+      naziv:"Zahvalnica dekanice za učestvovanje u uvođenju novog rješenja za evidenciju prisustva studenata i profesora na EFSA",
+      godina: "2023.",
+      slika: zahvalnica
+    },
+    {
+      naziv:"Uvod u baze podataka",
+      godina: "2024.",
+      slika: database
+    },
+    {
+      naziv:"Uvod u  Front-End razvoj",
+      godina: "2024.",
+      slika: frontend
+    },
+    {
+      naziv:"Programiranje sa JavaScriptom",
+      godina: "2024.",
+      slika: javascript
+    },
+
+
+  ]
+
   const darkCardStyle = {
     backgroundColor: "#FFFFF",
     border: "1px solid darkblue",
@@ -58,11 +101,18 @@ const App: React.FC = () => {
     height: "100%"
   };
 
+  //Modal
+
+  const[selectedSlika, setSelectedSlika] = useState<Certifikati|null>(null);
+
+  const uvecanaSlika = (cert:Certifikati) => setSelectedSlika(cert);
+  const zatvoriModal = () => setSelectedSlika(null);
+
   return (
     <div style={{ backgroundColor: "whitesmoke", minHeight: "100vh" }} className="py-4 py-md-5 text-white">
       <Container>
-        <Row className="g-4">
-          <Col lg={8}>
+        <Row className="g-5">
+          <Col lg={9}>
             <Card style={darkCardStyle} className="p-4 shadow">
               <Row className="align-items-center">
                 <Col xs={12} md={4} className="text-center mb-4 mb-md-0">
@@ -92,12 +142,12 @@ const App: React.FC = () => {
             </Card>
           </Col>
 
-          <Col lg={4}>
-            <Card style={darkCardStyle} className="p-4 text-center shadow">
+          <Col lg={3}>
+            <Card style={darkCardStyle} className="p-2 text-center shadow">
               <Card.Title className="fw-bold mb-4 text-primary text-uppercase">
                 Tech stack
               </Card.Title>
-              <Row className="g-4 align-items-center justify-content-center">
+              <Row className="g-1 align-items-center justify-content-center">
                 <Col xs={3} md={6} lg={6}>
                   <FaReact size={40} />
                 </Col>
@@ -109,6 +159,24 @@ const App: React.FC = () => {
                 </Col>
                 <Col xs={3} md={6} lg={6}>
                   <DiMsqlServer size={50} />
+                </Col>
+                 <Col xs={3} md={6} lg={6}>
+                  <FaFigma size={40} />
+                </Col>
+                 <Col xs={3} md={6} lg={6}>
+                  <DiMysql size={50} />
+                </Col>
+                 <Col xs={3} md={6} lg={6}>
+                  <DiBootstrap size={50} />
+                </Col>
+                 <Col xs={3} md={6} lg={6}>
+                  <DiGithubBadge size={50} />
+                </Col>
+                <Col xs={3} md={6} lg={6}>
+                  <SiTypescript size={35} />
+                </Col>
+                <Col xs={3} md={6} lg={6}>
+                  <PiFileCSharpLight size={50} />
                 </Col>
               </Row>
             </Card>
@@ -124,25 +192,28 @@ const App: React.FC = () => {
                   {skolovanje.naziv}: {skolovanje.fakultet}
                 </h5>
                 <p className="text-secondary small mb-3">{skolovanje.smjer}</p>
-                <Badge bg="white" className="border border-secondary mb-4 p-2 text-primary">
-                  {skolovanje.period}
-                </Badge>
 
                 <ListGroup variant="flush" className="bg-transparent">
-                  <ListGroup.Item className="bg-transparent text-secondary border-0 px-0 py-1 small">
+                  <Badge style={{width:"16%"}} className={"mx-2"} bg="primary" pill>2021.</Badge>
+                  <ListGroup.Item className="bg-transparent text-secondary border-0 px-3 py-3 small">
                     <span className="text-primary me-2">●</span> Demonstrator na katedri za Menadžment i informacione tehnologije
                   </ListGroup.Item>
-                  <ListGroup.Item className="bg-transparent text-secondary border-0 px-0 py-1 small">
-                    <span className="text-primary me-2">●</span> Suorganizator IV IT takmičenja za srednjoškolce u BiH
+                  <Badge style={{width:"16%"}} className={"mx-2"} bg="primary" pill>2022.</Badge>
+                  <ListGroup.Item as={"a"}  target="_blank" rel="noreferrer" href={"https://eu4digitalsme.ba/biblioteka/digitalne-konsultacije-decembar-2022/"} style={{textDecoration:"underline"}} className="bg-transparent text-secondary border-0 px-3 py-3 small">
+                    <span className="text-primary me-2">●</span> Učesnik na događaju "Dani digitalnih konsultacija: Collaborathon 2022"
                   </ListGroup.Item>
-                  <ListGroup.Item className="bg-transparent text-secondary border-0 px-0 py-1 small">
+                  <Badge style={{width:"25%"}} className={"mx-2"} bg="primary" pill>2022. - 2023.</Badge>
+                  <ListGroup.Item className="bg-transparent text-secondary border-0 px-3 py-3 small">
                     <span className="text-primary me-2">●</span> Team Leader volontera u Centru za menadžment i informacione tehnologije
                   </ListGroup.Item>
-                   <ListGroup.Item className="bg-transparent text-secondary border-0 px-0 py-1 small">
-                    <span className="text-primary me-2">●</span> Učesnik u razvoju novog sistema za evidenciju prisustva studenata i nastavnog osoblja Fakulteta upotrebom QR kod tehnologije
+                  <Badge style={{width:"16%"}} className={"mx-2"} bg="primary" pill>2023.</Badge>
+                  <ListGroup.Item as={"a"} target="_blank" rel="noreferrer" href={"https://www.efsa.unsa.ba/ef/bs/odrzano-4-it-takmicenje-za-srednjoskolce-na-ekonomskom-fakultetu-univerziteta-u-sarajevu"} style={{textDecoration:"underline"}} className="bg-transparent text-secondary  border-0 px-3 py-3 small">
+                    <span className="text-primary me-2">●</span> Suorganizator IV IT takmičenja za srednjoškolce u BiH
                   </ListGroup.Item>
-                  <ListGroup.Item className="bg-transparent text-secondary border-0 px-0 py-1 small">
-                    <span className="text-primary me-2">●</span> Učesnik na događaju "Dani digitalnih konsultacija: Collaborathon 2022"
+
+                  <Badge style={{width:"16%"}} className={"mx-2"} bg="primary" pill>2023.</Badge>
+                   <ListGroup.Item className="bg-transparent text-secondary border-0 px-3 py-3 small">
+                    <span className="text-primary me-2">●</span> Učesnik u razvoju novog sistema za evidenciju prisustva studenata i nastavnog osoblja Fakulteta upotrebom QR kod tehnologije
                   </ListGroup.Item>
                 </ListGroup>
 
@@ -150,6 +221,7 @@ const App: React.FC = () => {
                   href="https://plus-legacy.cobiss.net/cobiss/bh/bs/bib/57914886"
                   className="text-primary text-decoration-underline d-inline-block mt-3"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   Pogledaj diplomski rad
                 </Card.Link>
@@ -157,7 +229,44 @@ const App: React.FC = () => {
             </Card>
           </Col>
 
+
+
           <Col lg={7}>
+            <Card style={darkCardStyle} className="p-4 shadow">
+              <Card.Title className="fw-bold mb-4 text-primary">
+                Certifikati i zahvalnice
+              </Card.Title>
+              <div className="d-flex flex-column gap-3">
+                {certifikatiZahvalnice.map((cert, index) => (
+                      <div key={index} className=" border border-secondary p-3 rounded-4 transition-all">
+                        <div className="d-flex justify-content-between align-items-center">
+                          <div className="pe-2">
+                            <div className="d-flex flex-wrap gap-1 mb-2">
+                                  <Badge  bg="primary" style={{ fontSize: "9px" }}>{cert.godina}</Badge>
+                            </div>
+                            <h6 className="text-black mb-1 fw-bold">{cert.naziv}</h6>
+                            <div onClick={()=> uvecanaSlika(cert)}>
+                              <Image fluid src={cert.slika} width="200" />
+                            </div>
+                            <i style={{fontSize:"small"}}>Klikni na sliku da uvećaš</i>
+
+                          </div>
+                        </div>
+                      </div>
+                ))}
+              </div>
+              <Modal centered={true} size="lg" show={!!selectedSlika} onHide={zatvoriModal}>
+                <Modal.Header closeButton>
+                  <Modal.Title className={"text-primary text-bold"}>{selectedSlika?.naziv}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body style={{display:"flex", justifyContent:"center", alignItems:"center", alignContent:"center"}}>
+                <Image fluid src={selectedSlika?.slika} width="600" />
+                </Modal.Body>
+              </Modal>
+            </Card>
+          </Col>
+
+          <Col lg={12}>
             <Card style={darkCardStyle} className="p-4 shadow">
               <Card.Title className="fw-bold mb-4 text-primary">
                 Projekti
