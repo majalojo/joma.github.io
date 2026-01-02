@@ -53,17 +53,13 @@ const App: React.FC = () => {
 
   const projekti: Projekat[] = [
     {
-      naziv: "BUNJO d.o.o. Sarajevo",
-      opis: "Web stranica i CMS dashboard za upravljanje sadržajem.",
+      naziv: "WEB STRANICA + CMS DASHBOARD",
       godina: "2023. -",
-      link: "https://bunjogrupacija.ba",
       tag: ["React ", ".NET ", "MSSQL ", "MySQL ", "Azure Blob Storage ", "Azure Web Job ", "SignalR"]
     },
     {
-      naziv: "BUNJO d.o.o. Sarajevo",
-      opis: "Zvanična mobilna aplikacija dostupna na Play Store-u (uskoro i na App Store).",
+      naziv: "MOBILNA APLIKACIJA",
       godina: "2024. -",
-      link: "https://play.google.com/store/apps/details?id=com.majalojo.bunjogrupacijapk",
       tag: ["React Native ", "Expo Notifications ", "Expo-Mail ", "WebView ", "SignalR ", "SecureStorage ", "AsyncStorage"]
     },
   ];
@@ -271,7 +267,6 @@ const App: React.FC = () => {
                 {projekti.map((proj, idx) => (
                   <a
                     key={idx}
-                    href={proj.link}
                     target="_blank"
                     rel="noreferrer"
                     className="text-decoration-none"
@@ -285,12 +280,9 @@ const App: React.FC = () => {
                             ))}
                           </div>
                           <h6 className="text-black mb-1 fw-bold">{proj.naziv}</h6>
-                          <p className="text-secondary mb-0 small" style={{ fontSize: "12px" }}>
-                            {proj.opis}
-                          </p>
                            <Badge bg="secondary" style={{ fontSize: "9px" }}>{proj.godina}</Badge>
                         </div>
-                        <span className="text-primary fs-4"><FaArrowCircleRight size={20}/></span>
+
                       </div>
                     </div>
                   </a>
