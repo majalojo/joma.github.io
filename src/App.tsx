@@ -70,7 +70,7 @@ const App: React.FC = () => {
 
   const certifikatiZahvalnice:Certifikati[] = [
     {
-      naziv:"Zahvalnica bivše dekanice, a sadšnje guvernerke Centralne banke BiH, Jasmine Selimović za učestvovanje u projektu uvođenja novog rješenja za evidenciju prisustva studenata i profesora na EFSA",
+      naziv:"Zahvalnica bivše dekanice, a sadašnje guvernerke Centralne banke BiH, Jasmine Selimović za učestvovanje u projektu uvođenja novog rješenja za evidenciju prisustva studenata i profesora na EFSA",
       kratkiNaziv:"Zahvalnica",
       godina: "2023.",
       slika: zahvalnica
