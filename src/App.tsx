@@ -92,7 +92,6 @@ const App: React.FC = () => {
 
   const darkCardStyle = {
     backgroundColor: "#FFFFF",
-    border: "1px solid darkblue",
     color: "black",
     borderRadius: "20px",
     height: "100%"
@@ -171,6 +170,38 @@ const App: React.FC = () => {
               </Row>
             </Card>
           </Col>
+              <Col lg={12}>
+            <Card style={darkCardStyle} className="p-4 shadow">
+              <Card.Title className="fw-bold mb-4 text-primary">
+                Projekti
+              </Card.Title>
+              <div className="d-flex flex-column gap-3">
+                {projekti.map((proj, idx) => (
+                  <a
+                    key={idx}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-decoration-none"
+                  >
+                    <div className=" border border-secondary p-3 rounded-4 transition-all">
+                      <div className="d-flex justify-content-between align-items-center">
+                        <div className="pe-2">
+                          <div className="d-flex flex-wrap gap-1 mb-2">
+                            {proj.tag.map((onetag, index) => (
+                              <Badge key={index} bg="primary" style={{ fontSize: "9px" }}>{onetag}</Badge>
+                            ))}
+                          </div>
+                          <h6 className="text-black mb-1 fw-bold">{proj.naziv}</h6>
+                           <Badge bg="secondary" style={{ fontSize: "9px" }}>{proj.godina}</Badge>
+                        </div>
+
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </Card>
+          </Col>
 
           <Col lg={5}>
             <Card style={darkCardStyle} className="p-4 shadow">
@@ -184,10 +215,6 @@ const App: React.FC = () => {
                 <p className="text-secondary small mb-3">{skolovanje.smjer}</p>
 
                 <ListGroup variant="flush" className="bg-transparent">
-                  <ListGroup.Item className="bg-transparent text-secondary border-0 px-3 py-3 small">
-                    <span className="text-primary me-2">●</span> Demonstrator na katedri za Menadžment i informacione tehnologije
-                  </ListGroup.Item>
-
                   <ListGroup.Item as={"a"}  target="_blank" rel="noreferrer" href={"https://eu4digitalsme.ba/biblioteka/digitalne-konsultacije-decembar-2022/"} style={{textDecoration:"underline"}} className="bg-transparent text-secondary border-0 px-3 py-3 small">
                     <span className="text-primary me-2">●</span> Učesnik na događaju "Dani digitalnih konsultacija: Collaborathon 2022"
                   </ListGroup.Item>
@@ -255,38 +282,7 @@ const App: React.FC = () => {
             </Card>
           </Col>
 
-          <Col lg={12}>
-            <Card style={darkCardStyle} className="p-4 shadow">
-              <Card.Title className="fw-bold mb-4 text-primary">
-                Projekti
-              </Card.Title>
-              <div className="d-flex flex-column gap-3">
-                {projekti.map((proj, idx) => (
-                  <a
-                    key={idx}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-decoration-none"
-                  >
-                    <div className=" border border-secondary p-3 rounded-4 transition-all">
-                      <div className="d-flex justify-content-between align-items-center">
-                        <div className="pe-2">
-                          <div className="d-flex flex-wrap gap-1 mb-2">
-                            {proj.tag.map((onetag, index) => (
-                              <Badge key={index} bg="primary" style={{ fontSize: "9px" }}>{onetag}</Badge>
-                            ))}
-                          </div>
-                          <h6 className="text-black mb-1 fw-bold">{proj.naziv}</h6>
-                           <Badge bg="secondary" style={{ fontSize: "9px" }}>{proj.godina}</Badge>
-                        </div>
-
-                      </div>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </Card>
-          </Col>
+      
 
           <Col xs={12}>
             <footer className="mt-5 pt-4 border-top border-secondary d-flex flex-column flex-md-row justify-content-between align-items-center opacity-75">
